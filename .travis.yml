@@ -14,9 +14,6 @@ virtualenv:
 
 install:
   - npm install -g validate-dockerfile
-  - git clone --single-branch --depth=1 https://github.com/vauxoo/maintainer-quality-tools.git -b master ${HOME}/maintainer-quality-tools
 
 script:
-
-after_success:
-  - travis_after_tests_success
+  - for dfile in `find ${HOME}/build/osvalr/docker-odoo-image -name 'Dockerfile' -not -path "./.git/*"`; do echo "[ CHECKING $dfile ]"; docklint $dfile && echo ""; done
