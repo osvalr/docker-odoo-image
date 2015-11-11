@@ -9,11 +9,6 @@ cache:
 node_js:
   - "4.1"
 
-addons:
-  apt:
-    packages:
-      - nodejs
-
 virtualenv:
   system_site_packages: true
 
