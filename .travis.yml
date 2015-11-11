@@ -1,0 +1,27 @@
+language: python
+
+sudo: false
+cache:
+  apt: true
+  directories:
+    - $HOME/.cache/pip
+
+node_js:
+  - "4.1"
+
+addons:
+  apt:
+    packages:
+      - nodejs
+
+virtualenv:
+  system_site_packages: true
+
+install:
+  - npm install -g validate-dockerfile
+  - git clone --single-branch --depth=1 https://github.com/vauxoo/maintainer-quality-tools.git -b master ${HOME}/maintainer-quality-tools
+
+script:
+
+after_success:
+  - travis_after_tests_success
