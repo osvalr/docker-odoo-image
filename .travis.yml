@@ -5,8 +5,12 @@ sudo: false
 node_js:
   - "4.1"
 
+env:
+  global:
+    - REPO="osvalr/docker-odoo-image"
+    - VERSION="master"
 install:
   - npm install -g dockerlint
 
 script:
-  - for dfile in `find $TRAVIS_BUILD_DIR -name 'Dockerfile' -not -path "./.git/*"`; do echo " ===== [ CHECKING $dfile ] ===== "; dockerlint $dfile; if [ $? -ne 0 ]; then echo " ----- [ FINISHED IN ERROR ] ----- "; fi; echo ""; done
+  - cd ${TRAVIS_BUILD_DIR} && ./.dlint.sh
