@@ -133,9 +133,9 @@ RUN curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git
 ENV OCA_RUNBOT 1
 
 # Expose basic ports
-  # Postgres database
+# Postgres database
 EXPOSE 5432
-  # odoo ports
+# odoo ports
 EXPOSE 8069 8070 8071 8072
-  # ssh port
+# ssh port
 EXPOSE 22
